@@ -9,7 +9,7 @@
     <!ENTITY TERMUX_STYLING_APP_NAME "Termux:Styling">
     <!ENTITY TERMUX_TASKER_APP_NAME "Termux:Tasker">
     <!ENTITY TERMUX_WIDGET_APP_NAME "Termux:Widget">
-    <!ENTITY TERMUX_PREFIX_DIR_PATH "/data/data/com.bilibili.madoka.bilibili.patched/files/usr">
+    <!ENTITY TERMUX_PREFIX_DIR_PATH "/data/user/0/com.bilibili.madoka.bilibili.patched/files/usr">
     ]>
 
 <resources>
