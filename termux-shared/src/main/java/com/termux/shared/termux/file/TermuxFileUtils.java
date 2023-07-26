@@ -255,17 +255,23 @@ public class TermuxFileUtils {
      * or validating permissions failed, otherwise {@code null}.
      */
     public static Error isTermuxFilesDirectoryAccessible(@NonNull final Context context, boolean createDirectoryIfMissing, boolean setMissingPermissions) {
-        if (createDirectoryIfMissing)
-            context.getFilesDir();
+        final String filesPath = new File(TermuxConstants.TERMUX_FILES_DIR_PATH).getAbsolutePath();
 
-        if (!FileUtils.directoryFileExists(TermuxConstants.TERMUX_FILES_DIR_PATH, true))
-            return FileUtilsErrno.ERRNO_FILE_NOT_FOUND_AT_PATH.getError("termux files directory", TermuxConstants.TERMUX_FILES_DIR_PATH);
+        if (createDirectoryIfMissing) {
+            context.getFilesDir();
+            if (FileUtils.directoryFileExists(new File(filesPath).getParentFile().getAbsolutePath(), true) &&!FileUtils.directoryFileExists(filesPath, true)) {
+                FileUtils.createDirectoryFile(filesPath);
+            }
+        }
+
+        if (!FileUtils.directoryFileExists(filesPath, true))
+            return FileUtilsErrno.ERRNO_FILE_NOT_FOUND_AT_PATH.getError("termux files directory", filesPath);
 
         if (setMissingPermissions)
-            FileUtils.setMissingFilePermissions("termux files directory", TermuxConstants.TERMUX_FILES_DIR_PATH,
+            FileUtils.setMissingFilePermissions("termux files directory", filesPath,
                 FileUtils.APP_WORKING_DIRECTORY_PERMISSIONS);
 
-        return FileUtils.checkMissingFilePermissions("termux files directory", TermuxConstants.TERMUX_FILES_DIR_PATH,
+        return FileUtils.checkMissingFilePermissions("termux files directory", filesPath,
             FileUtils.APP_WORKING_DIRECTORY_PERMISSIONS, false);
     }
 
