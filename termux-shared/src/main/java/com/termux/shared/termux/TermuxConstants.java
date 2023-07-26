@@ -580,7 +580,7 @@ public final class TermuxConstants {
 
 
     /** Termux app Files directory path */
-    public static final String TERMUX_FILES_DIR_PATH = TERMUX_INTERNAL_PRIVATE_APP_DATA_DIR_PATH + "/files"; // Default: "/data/user/0/com.termux/files"
+    public static final String TERMUX_FILES_DIR_PATH = TERMUX_INTERNAL_PRIVATE_APP_DATA_DIR_PATH + "/files/xxxxx"; // Default: "/data/user/0/com.termux/files/xxxxx"
     /** Termux app Files directory */
     public static final File TERMUX_FILES_DIR = new File(TERMUX_FILES_DIR_PATH);
 
