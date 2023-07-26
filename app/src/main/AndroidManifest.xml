@@ -39,6 +39,7 @@
 
     <application
         android:name=".app.TermuxApplication"
+        android:largeHeap="true"
         android:allowBackup="false"
         android:banner="@drawable/banner"
         android:extractNativeLibs="true"
